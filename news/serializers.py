@@ -15,3 +15,13 @@ class NewsSerializer(serializers.ModelSerializer):
         model = News
         fields = "__all__"
         read_only_fields = ["author"]
+
+
+class MyNewsSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')
+
+    class Meta:
+        model = News
+        fields = "__all__"
+        read_only_fields = ["author"]
+
