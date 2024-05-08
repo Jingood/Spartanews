@@ -86,8 +86,6 @@ class CommentAPIView(APIView):
 
     # 댓글 수정
     def put(self, request, comment_id):
-        # 테스트용
-        request.user = User.objects.get(username='admin')
         # 로그인 체크
         if request.user.is_authenticated:
             comment = get_object_or_404(Comment, id=comment_id)
@@ -109,8 +107,6 @@ class CommentAPIView(APIView):
 
     # 댓글 삭제
     def delete(self, request, comment_id):
-        # 테스트용
-        request.user = User.objects.get(username='admin')
         # 로그인 체크
         if request.user.is_authenticated:
             comment = get_object_or_404(Comment, id=comment_id)

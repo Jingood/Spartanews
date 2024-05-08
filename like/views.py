@@ -18,8 +18,6 @@ login_rquired_response = {
 
 class LikeAPIView(APIView):
     def post(self, request, content_type, object_id):
-        # 테스트용
-        request.user = User.objects.get(username='admin')
         # 로그인 체크
         if request.user.is_authenticated:
 
@@ -49,9 +47,6 @@ class LikeAPIView(APIView):
             return Response(login_rquired_response, status=status.HTTP_401_UNAUTHORIZED)
 
     def delete(self, request, content_type, object_id):
-        # 테스트용
-        request.user = User.objects.get(username='admin')
-        # request.user = User.objects.get(username='adamjohnson')
         # 로그인 체크
         if request.user.is_authenticated:
 

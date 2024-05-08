@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.jjim_toggle, name="Jjimtoggle"),
+    path('news/<int:news_id>/', views.jjim_toggle, name="Jjimtoggle"),
 ]
