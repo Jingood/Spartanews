@@ -1,33 +1,31 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
+from django.contrib.contenttypes.models import ContentType
 from rest_framework.response import Response
-
+from accounts.models import User
 from .models import Jjim
+from news.models import News
 from .serializers import JjimSerializer
 
 
 @api_view(['POST'])
-def jjim_toggle(request, content_type_slug, object_id):
+def jjim_toggle(request, news_id):
+    news = get_object_or_404(News, id=news_id)
+    content_type = ContentType.objects.get_for_model(news)
     try:
-        content_type = get_object_or_404(content_type, slug=content_type_slug)
-        content_object = get_object_or_404(
-            content_type.model_class(), pk=object_id)
-    except (content_type.DoesNotExist, content_type.model_class().DoesNotExist):
-        return Response({'error': 'Invalid content type or object'}, status=status.HTTP_400_BAD_REQUEST)
-
-    try:
-        jjim = Jjim.objects.get(content_type=content_type,
-                                object_id=object_id, user=request.user)
-        jjim.delete()
-        is_liked = False
+        Jjim.objects.get(content_type=content_type, object_id=news_id, user=request.user).delete()
+        response = {
+            'code': status.HTTP_200_OK,
+            'message': "JJIM CANCEL SUCCESSFULLY"
+        }
     except Jjim.DoesNotExist:
-        jjim = Jjim.objects.create(
-            content_type=content_type, object_id=object_id, user=request.user)
-        is_liked = True
-
-    serializer = JjimSerializer(jjim)
-    return Response(serializer.data)
+        Jjim.objects.create(content_type=content_type, object_id=news_id, user=request.user)
+        response = {
+            'code': status.HTTP_200_OK,
+            "message": "JJIM SUCCESSFULLY"
+        }
+    return Response(response)
 
 
 @api_view(['GET'])

@@ -16,15 +16,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name='Jjim',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('object_id', models.PositiveIntegerField()),
-                ('content', models.TextField()),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
                 ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+                'unique_together': {('content_type', 'object_id', 'user')},
+            },
         ),
     ]
