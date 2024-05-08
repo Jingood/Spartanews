@@ -7,6 +7,7 @@ from rest_framework import status, viewsets
 from .serializers import NewsSerializer
 from .models import News
 
+
 class NewsViewSet(viewsets.ModelViewSet):
 
     queryset = News.objects.all()
