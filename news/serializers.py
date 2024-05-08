@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from accounts.models import User
 from .models import News
-from comments.serializers import CommentSerializer
+from comments.serializers import CommentDetailSerializer
 
 
 class NewsSerializer(serializers.ModelSerializer):
     author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), default=serializers.CurrentUserDefault())
     # 댓글 정보
-    comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentDetailSerializer(many=True, read_only=True)
     # 댓글 갯수
     comments_count = serializers.IntegerField(source='comments.count', read_only=True)
 
