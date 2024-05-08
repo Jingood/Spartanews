@@ -24,4 +24,5 @@ urlpatterns = [
     path('api/news/', include('news.urls')),
     path('api/comments/', include('comments.urls')),
     path('api/like/', include('like.urls')),
+    path('api/jjim/', include('jjim.urls')),
 ]
