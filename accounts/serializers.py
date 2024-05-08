@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
     my_comments = SerializerMethodField()
     my_jjim_news = SerializerMethodField()
 
+
     class Meta:
         model = User
         fields = [
@@ -23,7 +24,8 @@ class UserSerializer(serializers.ModelSerializer):
             'my_comments',
             'my_jjim_news'
         ]
-
+        extra_kwargs = {'password': {'write_only': True}}
+        
     def get_my_news(self, obj):
         news_queryset = obj.news.all()
         serializer = MyNewsSerializer(news_queryset, many=True)
