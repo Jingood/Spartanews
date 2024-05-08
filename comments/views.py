@@ -27,6 +27,7 @@ class NewsCommentAPIView(APIView):
     # 뉴스 댓글 목록
     def get(self, request, news_id):
         news = get_object_or_404(News, id=news_id)
+        print(news.comments)
         # 참조하는 모델 가져오기
         content_type = ContentType.objects.get_for_model(news)
         # 참조하는 모델 AND PK 조회
