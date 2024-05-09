@@ -50,8 +50,7 @@
 
 #### ERD
 ---
-![](https://velog.velcdn.com/images/jingood/post/03c1af47-2477-418a-b82a-f74bb5c15227/image.png)
-
+![스크린샷 2024-05-09 오후 8 19 07](https://github.com/Jingood/Spartanews/assets/60863619/4cb61378-fa12-4362-95e2-c01e4821dfd7)
 ---
 
 #### API
