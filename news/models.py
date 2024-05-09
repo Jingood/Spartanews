@@ -13,4 +13,5 @@ class News(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comments = GenericRelation('comments.Comment')
+    like = GenericRelation('like.Like')
 
