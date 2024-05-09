@@ -1,10 +1,14 @@
-# SpartaNews
+#### SpartaNews
 
-## 🖥️ 프로젝트 소개
+---
+
+#### 🖥️ 프로젝트 소개
 
 #### SpartaNews : 다양한 언론들의 기사, 뉴스들을 볼 수 있는 사이트, 
 
 #### 혹은 본인이 직접 기사, 뉴스들을 작성 할 수 있는 사이트
+
+---
 
 #### 🧭 목표 : DRF를 확실하게 사용해서 배포까지 가보자!!
 
@@ -47,14 +51,15 @@
   - 게시판/댓글 좋아요
 - 찜
   - 게시글 찜하기
-
+---
 #### ERD
 ---
 ![스크린샷 2024-05-09 오후 8 19 07](https://github.com/Jingood/Spartanews/assets/60863619/4cb61378-fa12-4362-95e2-c01e4821dfd7)
+
 ---
 
 #### API
-
+---
 ##### Accounts
 
 <img src=https://velog.velcdn.com/images/jingood/post/9df138ad-8216-4f11-9e42-348ef2e492d0/image.png>
