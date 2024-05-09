@@ -16,8 +16,8 @@
 - 장석천      : 댓글, 좋아요
 
 #### ⚙️ 개발 환경
-Python : Django, DRF
-DB : SQlite
+- Python : Django, DRF
+- DB : SQlite
 
 #### 📌주요기능
 - 회원
