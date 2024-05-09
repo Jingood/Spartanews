@@ -6,6 +6,7 @@ from .models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     content_type = serializers.ReadOnlyField(source='content_type.model')
+    like_count = serializers.ReadOnlyField(source='like.count')
 
     class Meta:
         model = Comment
@@ -20,6 +21,7 @@ class CommentDetailSerializer(CommentSerializer):
             'id',
             'author',
             'content_type',
+            'like_count',
             'content',
             'created',
             'reply',
