@@ -60,10 +60,10 @@ class LikeAPIView(APIView):
             if like.exists():
                 like.delete()
                 response = {
-                    'code': status.HTTP_204_NO_CONTENT,
+                    'code': status.HTTP_200_OK,
                     'message': 'UNLIKED SUCCESSFULLY',
                 }
-                return Response(response, status=status.HTTP_204_NO_CONTENT)
+                return Response(response, status=status.HTTP_200_OK)
             else:
                 response = {
                     'code': status.HTTP_200_OK,

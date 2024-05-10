@@ -116,9 +116,9 @@ class CommentAPIView(APIView):
 
             comment.delete()
             response = {
-                'code': status.HTTP_204_NO_CONTENT,
+                'code': status.HTTP_200_OK,
                 'message': 'COMMENT DELETED SUCCESSFULLY'
             }
-            return Response(response, status=status.HTTP_204_NO_CONTENT)
+            return Response(response, status=status.HTTP_200_OK)
         else:
             return Response(login_rquired_response, status=status.HTTP_401_UNAUTHORIZED)
