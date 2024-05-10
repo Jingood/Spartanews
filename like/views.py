@@ -20,15 +20,13 @@ class LikeAPIView(APIView):
     def post(self, request, content_type, object_id):
         # 로그인 체크
         if request.user.is_authenticated:
-
-            # 기본으로 news 모델 가져옴
-            obj = get_object_or_404(News, id=object_id)
             # url에 있는 content_type 가 comment 라면 comment 모델 가져오도록 설정
             if content_type == 'comment':
                 obj = get_object_or_404(Comment, id=object_id)
+            else:
+                obj = get_object_or_404(News, id=object_id)
             # 참조할 모델 가져오기
             content_type = ContentType.objects.get_for_model(obj)
-
             # 해당 글에 좋아요 기록이 없을때만 데이터 추가
             if not Like.objects.filter(content_type=content_type, object_id=object_id, user=request.user).exists():
                 Like.objects.create(content_type=content_type, object_id=object_id, user=request.user)
